@@ -1,24 +1,12 @@
 const _ = require("lodash");
 const { abbeyRoadRecords } = require("./lib/abbeyRoad");
 const { birthdays } = require("./lib/harryPotter");
-
-// HELPER FUNCTIONS
-function count(arr) {
-  return arr.reduce(
-    (prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev),
-    {},
-  );
-}
-
-function chunk(array, n) {
-  return array
-    .slice(0, ((array.length + n - 1) / n) | 0)
-    .map((c, i) => array.slice(n * i, n * i + n));
-}
-
-function getHighestValueOfObject(object) {
-  return Object.keys(object).reduce((a, b) => (object[a] > object[b] ? a : b));
-}
+const {
+  count,
+  chunk,
+  getHighestValueOfObject,
+  sortObjectByTwoKeys,
+} = require("./utils");
 
 // Iteration 1 - The Office
 const opinions = [
@@ -125,13 +113,7 @@ console.log(lastBeatlesSong(abbeyRoadRecords));
 
 const sixtiesSong = array => {
   const theSixties = array.filter(item => /^196/.test(item.year));
-  const theSixtiesSortedByYearAndMonth = theSixties.sort(function(a, b) {
-    if (a.year !== b.year) {
-      return b.year - a.year;
-    } else {
-      return b.month - a.month;
-    }
-  });
+  const theSixtiesSortedByYearAndMonth = sortObjectByTwoKeys(theSixties);
   return theSixtiesSortedByYearAndMonth[0].artist;
 };
 console.log(sixtiesSong(abbeyRoadRecords));
