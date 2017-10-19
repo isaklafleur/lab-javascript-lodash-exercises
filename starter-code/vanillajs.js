@@ -3,7 +3,6 @@ const { abbeyRoadRecords } = require("./lib/abbeyRoad");
 const { birthdays } = require("./lib/harryPotter");
 const {
   count,
-  chunk,
   getHighestValueOfObject,
   sortObjectByTwoKeys,
 } = require("./utils");
@@ -21,9 +20,9 @@ function pickOpinion() {
   return opinions[Math.floor(Math.random() * opinions.length)];
 }
 
-function addOpinion() {
+function makeFloorOpinions() {
   const opinions = [];
-  for (let i = 0; i < 10; i++) {
+  for (let ix = 0; ix < 10; ix++) {
     opinions.push(pickOpinion());
   }
   return opinions;
@@ -31,8 +30,8 @@ function addOpinion() {
 
 function employeeSatisfaction() {
   const building = [];
-  for (let i = 0; i < 5; i++) {
-    building.push(addOpinion());
+  for (let ix = 0; ix < 5; ix++) {
+    building.push(makeFloorOpinions());
   }
   return building;
 }
@@ -52,7 +51,17 @@ const moreBirthdays = [
 ];
 
 const allBirthdays = birthdays.concat(moreBirthdays);
-console.log(chunk(allBirthdays, 2));
+
+const birthDayNamePairsArray = allBirthdays.reduce(
+  (accumulator, currentValue, ix, array) => {
+    if (ix % 2 === 0) {
+      accumulator.push([currentValue, array[ix + 1]]);
+    }
+    return accumulator;
+  },
+  [],
+);
+console.log(birthDayNamePairsArray);
 
 // Iteration 3 - The Password Problem (trim to lenght 10 & password with only unique characters)
 var goodPsswd = "1234567890";
