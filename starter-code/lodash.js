@@ -1,3 +1,4 @@
+console.time("lodash");
 const _ = require("lodash");
 const { abbeyRoadRecords } = require("./lib/abbeyRoad");
 const { birthdays } = require("./lib/harryPotter");
@@ -30,6 +31,8 @@ function employeeSatisfaction() {
   }
   return building;
 }
+
+console.log(employeeSatisfaction());
 
 // Iteration 2 - Harry Potter's Birthdays
 const moreBirthdays = [
@@ -81,7 +84,7 @@ console.log(trimPassword(badPsswd));
 // Iteration 4 - Abbey Road Studios
 const novemberArtists = array => {
   const artistsByCount = _.countBy(
-    array.filter(item => item.year === 1965).map(item => item.artist),
+    array.filter(item => item.month === 10).map(item => item.artist),
   );
   const max = Math.max(...Object.values(artistsByCount));
   return _.findKey(artistsByCount, val => val === max);
@@ -106,3 +109,4 @@ const sixtiesSong = array => {
   return _.sortBy(theSixties, ["year", "month"])[theSixties.length - 1].artist;
 };
 console.log(sixtiesSong(abbeyRoadRecords));
+console.timeEnd("lodash");

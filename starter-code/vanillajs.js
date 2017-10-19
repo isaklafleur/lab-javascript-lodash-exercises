@@ -1,4 +1,4 @@
-const _ = require("lodash");
+console.time("vanillajs");
 const { abbeyRoadRecords } = require("./lib/abbeyRoad");
 const { birthdays } = require("./lib/harryPotter");
 const {
@@ -115,3 +115,4 @@ const sixtiesSong = array => {
   return theSixtiesSortedByYearAndMonth[0].artist;
 };
 console.log(sixtiesSong(abbeyRoadRecords));
+console.timeEnd("vanillajs");
