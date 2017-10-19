@@ -1,3 +1,5 @@
+#Ignore Visual Studio folders
+.vscode
 # Logs
 logs
 *.log

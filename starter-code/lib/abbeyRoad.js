@@ -515,15 +515,15 @@ const abbeyRoadRecords = [
     year: 1969,
   },
   {
-    song: "Hank Marvin",
-    artist: "Hank Marvin",
-    month: 10,
-    year: 1969,
-  },
-  {
     song: "Bloodsucker",
     artist: "Deep Purple",
     month: 11,
+    year: 1969,
+  },
+  {
+    song: "Hank Marvin",
+    artist: "Hank Marvin",
+    month: 10,
     year: 1969,
   },
   {
