@@ -52,8 +52,6 @@ const moreBirthdays = [
 ];
 
 const allBirthdays = birthdays.concat(moreBirthdays);
-console.log(allBirthdays);
-
 console.log(chunk(allBirthdays, 2));
 
 // Iteration 3 - The Password Problem (trim to lenght 10 & password with only unique characters)
